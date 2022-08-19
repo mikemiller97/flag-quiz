@@ -2,6 +2,7 @@ import React from "react"
 
 export default function Choice(props) {
     
+    // Behavior for if answer is correct or not
     const checkCorrect = () => {
         if (props.choice !== props.correctChoice) {
             props.setGameOver(true)

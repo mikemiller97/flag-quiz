@@ -41,7 +41,9 @@ export default function Body() {
         return array;
     }
     
+    // function to change the flag when needed
     const changeFlag = () => {
+        // Selects random flag from data and applies it to image
         let randomFlag = (Math.floor(Math.random() * allData.codes.length).toString())
 
         while (usedFlags.includes(randomFlag)) {
@@ -50,6 +52,7 @@ export default function Body() {
 
         usedFlags.push(randomFlag)
 
+        // Populates choices to pick from
         let flagChoices = []
 
         while (flagChoices.length < 3) {
@@ -94,6 +97,7 @@ export default function Body() {
         }
     }
 
+    // Detects when to add points, when game is started/finished
     useEffect(() => {
         window.addEventListener("resize", handleResize)
 
@@ -182,7 +186,7 @@ export default function Body() {
                 <p>High Score: {highScore}</p>
                 <p>Score: {score}</p>
             </div>
-            
+
         </div>
     )
 }
