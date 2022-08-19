@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import codes from "../data/codes"
 import Choice from "./Choice"
-import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+import { CountdownCircleTimer } from "react-countdown-circle-timer"
 import "../styles/body.css"
 
-export default function Body() {
+export default function Body(props) {
     const [flag, setFlag] = React.useState("https://countryflagsapi.com/png/826")
     const [usedFlags, setUsedFlags] = React.useState([])
     const [choice1, setChoice1] = React.useState([])
@@ -27,7 +27,7 @@ export default function Body() {
         let currentIndex = array.length,  randomIndex;
       
         // While there remain elements to shuffle.
-        while (currentIndex != 0) {
+        while (currentIndex !== 0) {
       
           // Pick a remaining element.
           randomIndex = Math.floor(Math.random() * currentIndex);
@@ -101,6 +101,10 @@ export default function Body() {
     useEffect(() => {
         window.addEventListener("resize", handleResize)
 
+        if (usedFlags.length === allData.codes.length) {
+            props.setVictory(true)
+        }
+
         if (highScore < score) {
             setHighScore(score)
             localStorage.setItem("highScore", JSON.stringify(score))
@@ -128,7 +132,7 @@ export default function Body() {
                     onComplete={() => setGameOver(true)}
                     isPlaying={!showStart}
                     duration={7}
-                    colors={['#004777', '#F7B801', '#A30000', '#A30000']}
+                    colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
                     colorsTime={[7, 5, 2, 0]}
                     size={isMobile ? 80 :120}
                     >

@@ -1,11 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react"
+import "./App.css";
 import Body from "./components/Body"
+import Victory from "./components/Victory"
 
 function App() {
+  const [victory, setVictory] = React.useState(false)
+
+  useEffect(() => {
+
+  })
+
   return (
     <div className="App">
-      <Body />
+      { victory ? <Victory /> : <Body setVictory={setVictory} /> }
     </div>
   );
 }

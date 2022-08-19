@@ -1,0 +1,5 @@
+.victory {
+    display: flex;
+    flex-direction: column;
+    background-color: #FAF9F6;
+}
