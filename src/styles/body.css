@@ -1,3 +1,7 @@
+html {
+    background-color: #FAF9F6;
+}
+
 .body {
     display: flex;
     flex-direction: column;
@@ -102,4 +106,14 @@
 
 .button-4:-webkit-details-marker {
   display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .scores {
+        padding-bottom: 15px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
 }

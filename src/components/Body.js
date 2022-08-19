@@ -17,6 +17,7 @@ export default function Body() {
     const [showStart, setShowStart] = React.useState(true)
     const [highScore, setHighScore] = React.useState(localStorage.getItem("highScore") ? JSON.parse(localStorage.getItem("highScore")) : 0)
     const [key, setKey] = React.useState(0);
+    const [isMobile, setIsMobile] = React.useState(false)
 
     const allData = codes
 
@@ -85,7 +86,17 @@ export default function Body() {
             setKey(prevKey => prevKey + 1)
     }
 
+    const handleResize = () => {
+        if (window.innerWidth < 720) {
+            setIsMobile(true)
+        } else {
+            setIsMobile(false)
+        }
+    }
+
     useEffect(() => {
+        window.addEventListener("resize", handleResize)
+
         if (highScore < score) {
             setHighScore(score)
             localStorage.setItem("highScore", JSON.stringify(score))
@@ -107,11 +118,6 @@ export default function Body() {
                 <h1>Flag Quiz</h1>
             </div>
 
-            <div className="scores">
-                <p>High Score: {highScore}</p>
-                <p>Score: {score}</p>
-            </div>
-
             <div className="timer">
                 <CountdownCircleTimer
                     key={key}
@@ -120,7 +126,7 @@ export default function Body() {
                     duration={7}
                     colors={['#004777', '#F7B801', '#A30000', '#A30000']}
                     colorsTime={[7, 5, 2, 0]}
-                    size={120}
+                    size={isMobile ? 80 :120}
                     >
                     {({ remainingTime }) => remainingTime}
                 </CountdownCircleTimer>
@@ -171,6 +177,12 @@ export default function Body() {
                 />
             </div> : null}
             {showStart ? <button className="button-4" onClick={startGame}>Start</button> : null}
+
+            <div className="scores">
+                <p>High Score: {highScore}</p>
+                <p>Score: {score}</p>
+            </div>
+            
         </div>
     )
 }
