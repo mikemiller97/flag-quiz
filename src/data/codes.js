@@ -376,10 +376,6 @@ const codes = [
         code: "344"
     },
     {
-        name: "Heard Island and Mcdonald Islands",
-        code: "334"
-    },
-    {
         name: "Honduras",
         code: "340"
     },
