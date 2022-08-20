@@ -1,0 +1,11 @@
+.lives {
+    display: flex;
+}
+
+.life {
+    display: flex;
+    list-style-type: none;
+    gap: 10px;
+    padding-left: 10px;
+    color: green;
+}

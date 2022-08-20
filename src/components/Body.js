@@ -3,6 +3,7 @@ import codes from "../data/codes"
 import Choice from "./Choice"
 import { CountdownCircleTimer } from "react-countdown-circle-timer"
 import "../styles/body.css"
+import Lives from "./Lives"
 
 export default function Body(props) {
     const [flag, setFlag] = React.useState("https://countryflagsapi.com/png/826")
@@ -18,6 +19,8 @@ export default function Body(props) {
     const [highScore, setHighScore] = React.useState(localStorage.getItem("highScore") ? JSON.parse(localStorage.getItem("highScore")) : 0)
     const [key, setKey] = React.useState(0);
     const [isMobile, setIsMobile] = React.useState(false)
+    const [lives, setLives] = React.useState(3)
+    const [clicks, setClicks] = React.useState(0)
 
     const allData = codes
 
@@ -87,6 +90,8 @@ export default function Body(props) {
             setGameOver(false)
             changeFlag()
             setKey(prevKey => prevKey + 1)
+            setLives(3)
+            setClicks(prevClicks => prevClicks + 1)
     }
 
     const handleResize = () => {
@@ -121,7 +126,7 @@ export default function Body(props) {
     }, [score, gameOver])
 
     return (
-        <div className="body">
+        <div className="body" id="body">
             <div className="title">
                 <h1>Flag Quiz</h1>
             </div>
@@ -155,6 +160,9 @@ export default function Body(props) {
                     addPoint={setScore}
                     point={score}
                     setKey={setKey}
+                    setLives={setLives}
+                    lives={lives}
+                    setClicks={setClicks}
                 />
                 <Choice 
                     choice={choice2}
@@ -164,6 +172,9 @@ export default function Body(props) {
                     addPoint={setScore}
                     point={score}
                     setKey={setKey}
+                    setLives={setLives}
+                    lives={lives}
+                    setClicks={setClicks}
                 />
                 <Choice 
                     choice={choice3}
@@ -173,6 +184,9 @@ export default function Body(props) {
                     addPoint={setScore}
                     point={score}
                     setKey={setKey}
+                    setLives={setLives}
+                    lives={lives}
+                    setClicks={setClicks}
                 />
                 <Choice
                     choice={choice4}
@@ -182,10 +196,18 @@ export default function Body(props) {
                     addPoint={setScore} 
                     point={score}
                     setKey={setKey}
+                    setLives={setLives}
+                    lives={lives}
+                    setClicks={setClicks}
                 />
             </div> : null}
             {showStart ? <button className="button-4" onClick={startGame}>Start</button> : null}
-
+            
+            <Lives 
+                lives={lives}
+                setLives={setLives}
+                clicks={clicks}
+            />
             <div className="scores">
                 <p>High Score: {highScore}</p>
                 <p>Score: {score}</p>
