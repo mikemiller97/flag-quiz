@@ -134,7 +134,10 @@ export default function Body(props) {
             <div className="timer">
                 <CountdownCircleTimer
                     key={key}
-                    onComplete={() => setGameOver(true)}
+                    onComplete={() => {
+                        document.getElementById("body").style.background = "#800020"
+                        setInterval(() => document.getElementById("body").style.background = "#FAF9F6", 500)
+                        setGameOver(true)}}
                     isPlaying={!showStart}
                     duration={7}
                     colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
@@ -209,8 +212,8 @@ export default function Body(props) {
                 clicks={clicks}
             />
             <div className="scores">
-                <p>High Score: {highScore}</p>
                 <p>Score: {score}</p>
+                <p>High Score: {highScore}</p>
             </div>
 
         </div>

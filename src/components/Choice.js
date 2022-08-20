@@ -8,7 +8,7 @@ export default function Choice(props) {
 
         if (props.choice !== props.correctChoice) {
             document.getElementById("body").style.background = "#800020"
-            setInterval(() => document.getElementById("body").style.background = "#FAF9F6", 100)
+            setInterval(() => document.getElementById("body").style.background = "#FAF9F6", 500)
         }
 
         if (props.choice !== props.correctChoice && props.lives > 0) {
