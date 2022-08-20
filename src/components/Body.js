@@ -120,7 +120,7 @@ export default function Body(props) {
             return
         }
 
-        if (score >= 1) {
+        if (score >= 0) {
             changeFlag()
         }
     }, [score, gameOver, clicks])
