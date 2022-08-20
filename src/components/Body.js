@@ -62,7 +62,7 @@ export default function Body(props) {
             let falseFlag = Math.floor(Math.random() * allData.codes.length).toString()
 
             if (falseFlag === randomFlag) continue
-            if (flagChoices.includes(falseFlag)) continue
+            if (flagChoices.includes(allData.codes[falseFlag].name)) continue
 
             flagChoices.push(allData.codes[falseFlag].name)
         }
