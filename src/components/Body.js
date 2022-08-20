@@ -123,7 +123,7 @@ export default function Body(props) {
         if (score >= 1) {
             changeFlag()
         }
-    }, [score, gameOver])
+    }, [score, gameOver, clicks])
 
     return (
         <div className="body" id="body">
