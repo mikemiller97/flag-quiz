@@ -5,6 +5,7 @@ export default function Choice(props) {
     // Behavior for if answer is correct or not
     const checkCorrect = () => {
         props.setClicks(prevClicks => prevClicks + 1)
+        props.setKey(prevKey => prevKey + 1)
 
         if (props.choice !== props.correctChoice) {
             document.getElementById("body").style.background = "#800020"
