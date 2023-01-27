@@ -153,7 +153,7 @@ export default function Body(props) {
                     <p>Game Over!</p> 
                     <p>The correct answer was {correctChoice}</p>
                 </div> : null}
-            <img src={flag} alt="A flag that must be guessed" id="flag"/>
+            <img src={flag} alt="A flag that must be guessed" id="flag" crossorigin="anonymous"/>
             {!showStart ? <div className="choices">
                 <Choice 
                     choice={choice1} 
@@ -215,7 +215,6 @@ export default function Body(props) {
                 <p>Score: {score}</p>
                 <p>High Score: {highScore}</p>
             </div>
-
         </div>
     )
 }
